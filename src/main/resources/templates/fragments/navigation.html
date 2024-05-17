@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation Fragment</title>
+</head>
+<body>
+    <nav th:fragment="navbar">
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/books}">Books</a></li>
+            <li class="right"><a href="/signin">Sign In</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
