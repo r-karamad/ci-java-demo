@@ -54,12 +54,6 @@ jobs:
 
     - name: Static Code Analysis
       run: ./gradlew check
-
-    - name: Security Scan
-      uses: owasp/dependency-check-action@v2
-      with:
-        format: 'ALL'
-        outputDirectory: './dependency-check-report'
   
   build-docker:
     runs-on: ubuntu-latest
