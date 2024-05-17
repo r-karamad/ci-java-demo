@@ -51,8 +51,8 @@ jobs:
         context: .
         push: true
         tags: |
-          ${{ secrets.DOCKER_USERNAME }}/${{ steps.repo_name.outputs.name }}:latest
-          ${{ secrets.DOCKER_USERNAME }}/${{ steps.repo_name.outputs.name }}:${{ steps.vars.outputs.short_sha }}
+          ${{ secrets.DOCKER_USERNAME }}/${{ env.repo_name }}:latest
+          ${{ secrets.DOCKER_USERNAME }}/${{ env.repo_name }}:${{ env.short_sha }}
 
     - name: Image digest
       run: echo ${{ steps.build-push.outputs.digest }}
