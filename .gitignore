@@ -1,4 +1,3 @@
-!gradle/wrapper/gradle-wrapper.jar
 *#
 *.iml
 *.ipr
@@ -25,6 +24,7 @@ _site/
 activemq-data
 bin
 build
+!gradle/wrapper/gradle-wrapper.jar
 !/**/src/**/bin
 !/**/src/**/build
 build.log
