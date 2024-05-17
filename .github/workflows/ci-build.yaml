@@ -39,16 +39,20 @@ jobs:
 
     - name: Extract short SHA
       id: vars
-      run: echo "::set-output name=short_sha::${GITHUB_SHA::7}"
-
+      run: echo "short_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+  
+    - name: Extract repository name
+      id: repo_name
+      run: echo "repo_name=$(echo ${{ github.repository }} | cut -d'/' -f2)" >> $GITHUB_OUTPUT
+      
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
         tags: |
-          ${{ secrets.DOCKER_USERNAME }}/my-app:latest
-          ${{ secrets.DOCKER_USERNAME }}/my-app:${{ steps.vars.outputs.short_sha }}
+          ${{ secrets.DOCKER_USERNAME }}/${{ steps.repo_name.outputs.name }}:latest
+          ${{ secrets.DOCKER_USERNAME }}/${{ steps.repo_name.outputs.name }}:${{ steps.vars.outputs.short_sha }}
 
     - name: Image digest
       run: echo ${{ steps.build-push.outputs.digest }}
