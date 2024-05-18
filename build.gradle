@@ -45,14 +45,7 @@ tasks.withType(Checkstyle) {
     maxHeapSize = "1g"
     reports {
         xml.required = true 
-        html.required = false 
-    }
-}
-
-task checkstyleMain(type: Checkstyle) {
-    source 'src/main/java'
-    classpath = files()
-    reports {
+        html.required = false
         xml.destination = file('build/reports/checkstyle/main.xml')
     }
 }
