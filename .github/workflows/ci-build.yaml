@@ -52,17 +52,34 @@ jobs:
         git push origin ${{ github.ref_name }}
         
     - name: Build with Gradle
-      run: ./gradlew build --no-daemon
+      run: ./gradlew -i clean assemble compileTestJava --no-daemon
 
     - name: Run unit tests
-      run: ./gradlew test
+      run: ./gradlew -i test --continue
       
     # - name: Run Integration Tests
     #   run: ./gradlew integrationTest
 
     - name: Static Code Analysis
       run: ./gradlew check
+
+    - name: Run Checkstyle and SpotBugs
+      run: ./gradlew checkstyleMain checkstyleTest spotbugsMain --continue
   
+    - name: Upload Checkstyle Report
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: checkstyle-report
+        path: '**/build/reports/checkstyle/main.xml'
+
+    - name: Upload SpotBugs Report
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: spotbugs-report
+        path: '**/build/reports/spotbugs/main.xml'
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
