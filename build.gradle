@@ -34,18 +34,8 @@ tasks.named('test') {
 
 checkstyle {
     toolVersion = '10.12.4'
-	configFile = rootProject.file("config/checkstyle/checkstyle.xml") 
+	configFile = file("config/checkstyle/checkstyle.xml") 
     reportsDir = file("$project.buildDir/reports/checkstyle")
 	ignoreFailures = false
     checkstyleTest.enabled = false
-}
-
-tasks.withType(Checkstyle) {
-    minHeapSize = "200m"
-    maxHeapSize = "1g"
-    reports {
-        xml.required = true 
-        html.required = false
-        xml.destination = file('build/reports/checkstyle/main.xml')
-    }
 }

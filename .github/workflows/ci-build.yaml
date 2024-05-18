@@ -60,9 +60,6 @@ jobs:
     # - name: Run Integration Tests
     #   run: ./gradlew integrationTest
 
-    - name: Static Code Analysis
-      run: ./gradlew check
-
     - name: Run Checkstyle
       run: ./gradlew checkstyleMain --continue
   
