@@ -39,3 +39,10 @@ checkstyle {
 	ignoreFailures = false
     checkstyleTest.enabled = false
 }
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.required = true
+        html.required = false
+    }
+}
