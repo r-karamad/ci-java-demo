@@ -34,7 +34,7 @@ tasks.named('test') {
 
 checkstyle {
     toolVersion = '10.12.4'
-	configFile = file("config/checkstyle/checkstyle.xml") 
+	configFile = rootProject.file("config/checkstyle/checkstyle.xml")
     reportsDir = file("$project.buildDir/reports/checkstyle")
 	ignoreFailures = false
     checkstyleTest.enabled = false
