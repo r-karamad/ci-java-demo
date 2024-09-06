@@ -1,4 +1,4 @@
-name: Build
+name: 🛠️ 🐳 Build
 
 on:
   push:
@@ -131,4 +131,3 @@ jobs:
   #   - name: Notify Team
   #     run: |
   #       curl -X POST -H 'Content-type: application/json' --data '{"text":"Build and deployment completed successfully."}' ${{ secrets.SLACK_WEBHOOK_URL }}
-    
